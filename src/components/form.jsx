@@ -105,29 +105,33 @@ function Form() {
           </form>
         </div>
         <div className="mt-10">
-          {currentPosts?.map((item, index) => (
-            <>
-              <div key={index} className="lg:w-1/2 w-[90%] flex bg-white rounded-lg mx-auto">
-                <div className="px-3 py-5 sm:w-[10%] w-[20%]">
-                  <img src={profil} alt="profil" />
+          {currentPosts.length < 1 ? (
+            <h2 className="text-2xl font-bold">Belum ada ucapan</h2>
+          ) : (
+            currentPosts?.map((item, index) => (
+              <>
+                <div key={index} className="lg:w-1/2 w-[90%] flex bg-white rounded-lg mx-auto">
+                  <div className="px-3 py-5 sm:w-[10%] w-[20%]">
+                    <img src={profil} alt="profil" />
+                  </div>
+                  <div className="w-[90%] bg-orange-300 my-auto rounded-md mt-5 mb-5 mr-8">
+                    <div className="text-start py-2 px-4 flex">
+                      <p className="font-semibold text-base">{item.nama}</p>
+                      {item.kehadiran === "hadir" ? <p className="ml-5 bg-green-200 text-sm font-semibold rounded-md py-1 px-2">hadir</p> : <p className="ml-5 bg-red-200 text-sm rounded-md font-semibold py-1 px-2">Tidak hadir</p>}
+                    </div>
+                    <div className="text-start py-2 px-4 flex">
+                      <p>{item.ucapan}</p>
+                    </div>
+                    <div className="sm:-ml-[75%]  mb-1">
+                      <p>
+                        {item.createdAt.slice(0, 10)} {item.createdAt.slice(12, 16)}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <div className="w-[90%] bg-orange-300 my-auto rounded-md mt-5 mb-5 mr-8">
-                  <div className="text-start py-2 px-4 flex">
-                    <p className="font-semibold">{item.nama}</p>
-                    {item.kehadiran === "hadir" ? <p className="ml-5 bg-green-200 py-1 px-2">hadir</p> : <p className="ml-5 bg-red-200 py-1 px-2">Tidak hadir</p>}
-                  </div>
-                  <div className="text-start py-2 px-4 flex">
-                    <p>{item.ucapan}</p>
-                  </div>
-                  <div className="sm:-ml-[75%]  mb-1">
-                    <p>
-                      {item.createdAt.slice(0, 10)} {item.createdAt.slice(12, 16)}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </>
-          ))}
+              </>
+            ))
+          )}
         </div>
         <Pagination totalPosts={currentPosts?.length} postPerPage={postPerPage} />
       </div>
