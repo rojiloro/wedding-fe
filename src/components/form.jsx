@@ -47,7 +47,7 @@ function Form() {
 
   useEffect(() => {
     refetch();
-  }, []);
+  }, [users]);
 
   // pagination
   const lastPostIndex = currentPage * postPerPage;
