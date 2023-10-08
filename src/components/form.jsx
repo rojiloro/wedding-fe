@@ -53,20 +53,11 @@ function Form() {
   const firstPostIndex = lastPostIndex - postPerPage;
   const currentPosts = show?.slice(firstPostIndex, lastPostIndex);
 
-  const options = {
-    timeZone: "Asia/Jakarta",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-  };
-
+  
   return (
     <>
       <div className="text-center min-h-screen bg-orange-50 py-10">
-        <h1 className="text-2xl font-bold">Guest Book</h1>
+        <h1 className="text-2xl font-bold font-custom2">Guest Book</h1>
         <div className="sm:w-1/2 w-[90%] bg-white py-3 px-10 mx-auto rounded-md mt-5">
           <form onSubmit={(e) => handleSubmit.mutate(e)}>
             <div className="flex justify-start mb-2">
