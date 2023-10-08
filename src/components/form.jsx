@@ -79,7 +79,7 @@ function Form() {
             </div>
             <div className="flex justify-start mb-2">
               <select id="kedatangan" value={kedatangan} required onChange={(e) => setKedatangan(e.target.value)} className="w-[100%] p-1 border border-orange-400 rounded-lg focus:ring focus:border-none focus:outline-none">
-                <option hidden>Pilih</option>
+                <option hidden className="text-slate-600">Pilih</option>
                 <option value="hadir">Hadir</option>
                 <option value="tidakHadir">Tidak Hadir</option>
               </select>
