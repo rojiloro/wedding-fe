@@ -28,7 +28,6 @@ function Form() {
       }
       e.preventDefault();
       const response = await API.post("/user", data);
-      console.log("ter submit", response);
 
       setNama("");
       setKedatangan("");
@@ -47,12 +46,22 @@ function Form() {
 
   useEffect(() => {
     refetch();
-  }, [users]);
+  }, [handleSubmit]);
 
   // pagination
   const lastPostIndex = currentPage * postPerPage;
   const firstPostIndex = lastPostIndex - postPerPage;
   const currentPosts = show?.slice(firstPostIndex, lastPostIndex);
+
+  const options = {
+    timeZone: "Asia/Jakarta",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  };
 
   return (
     <>
@@ -105,7 +114,7 @@ function Form() {
           </form>
         </div>
         <div className="mt-10">
-          {currentPosts.length < 1 ? (
+          {currentPosts?.length < 1 ? (
             <h2 className="text-2xl font-bold">Belum ada ucapan</h2>
           ) : (
             currentPosts?.map((item, index) => (
@@ -124,7 +133,7 @@ function Form() {
                     </div>
                     <div className="sm:-ml-[75%]  mb-1">
                       <p>
-                        {item.createdAt.slice(0, 10)} {item.createdAt.slice(12, 16)}
+                        {item.createdAt.slice(0, 10)} {item.createdAt.slice(11, 16)}
                       </p>
                     </div>
                   </div>
