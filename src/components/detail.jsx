@@ -52,7 +52,7 @@ function Detail() {
               <p>19, 20 Oktober 2023</p>
               <p>Karangsari 02/04, Dieng Kulon, Batur</p>
               <p>Banjarnegara</p>
-              <p>Click to see on maps</p>
+              <p className="text-xl font-semibold text-orange-600">Click to see on maps</p>
             </Link>
           </div>
         </div>
