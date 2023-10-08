@@ -28,7 +28,7 @@ function Hero() {
             <h1 data-aos="fade-left">Zumrotun Alfiyah, Alhz</h1>
           </div>
           <div data-aos="zoom-in" className="mb-16 font-bold sm:text-sm text-xs uppercase  sm:tracking-[1em] tracking-[0.5em] text-slate-800 decoration-black">
-            <p>Senin, 19 Oktober 2021</p>
+            <p>Senin, 19 Oktober 2023</p>
           </div>
           {/* <div className="mb-10">
             <p>Untuk</p>

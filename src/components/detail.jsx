@@ -49,7 +49,7 @@ function Detail() {
             <Link target="_blank" to="https://maps.app.goo.gl/nEf5B3Ry99zR7V568">
               <p>Tamu Undangan</p>
               <p>Rabu, Kamis</p>
-              <p>19, 20 Oktober 2022</p>
+              <p>19, 20 Oktober 2023</p>
               <p>Karangsari 02/04, Dieng Kulon, Batur</p>
               <p>Banjarnegara</p>
             </Link>
