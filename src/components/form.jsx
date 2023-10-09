@@ -3,7 +3,7 @@ import profil from "../assets/profil.png";
 
 import { useMutation, useQuery } from "react-query";
 import { API } from "../config/api";
-import Pagination from "./pagination";
+
 
 function Form() {
   const [nama, setNama] = useState("");
@@ -51,16 +51,9 @@ function Form() {
     refetch();
   }, [currentPage]);
 
-  // pagination
-
-  // Memotong data sesuai dengan halaman saat ini
-  // const indexLastProduct = currentPage * itemsPerPage;
-  // const indexFirstProduct = indexLastProduct - itemsPerPage;
-
-  // const currentData = json?.allData.slice(indexFirstProduct, indexLastProduct);
   const currentData = json?.allData;
 
-  // Fungsi untuk mengganti halaman
+  
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
