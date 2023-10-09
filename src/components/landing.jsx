@@ -1,10 +1,11 @@
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import Detail from "./detail";
 import Countdown from "./countdown";
 import bg from "../assets/bg6.jpg";
 import Form from "./form";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Navbar from "./navbar";
 
 function Landing() {
   useEffect(() => {
@@ -25,9 +26,10 @@ function Landing() {
           <h1 data-aos="fade-right">Zumrotun Alfiyah, Alhz </h1>
         </div>
         <div data-aos="zoom-in" className="mb-16 font-bold sm:text-sm text-xs uppercase  sm:tracking-[0.8em] tracking-[0.5em] text-slate-800 decoration-black">
-          <p>Senin, 19 Oktober 2023</p>
+          <p>Kamis, 19 Oktober 2023</p>
         </div>
       </div>
+      <Navbar />
       <Detail />
       <Countdown />
       <Form />
