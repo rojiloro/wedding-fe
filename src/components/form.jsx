@@ -4,16 +4,12 @@ import profil from "../assets/profil.png";
 import { useMutation, useQuery } from "react-query";
 import { API } from "../config/api";
 import Pagination from "./pagination";
-import moment from "moment";
 
 function Form() {
   const [nama, setNama] = useState("");
   const [kedatangan, setKedatangan] = useState("");
   const [ucapan, setUcapan] = useState("");
-  const [show, setShow] = useState(null);
-
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postPerPage, setPostPerPage] = useState(5);
+  const [json, setJson] = useState(null);
 
   const data = {
     nama: nama,
@@ -39,8 +35,8 @@ function Form() {
 
   let { data: users, refetch } = useQuery("usersCache", async () => {
     const response = await API.get("/users");
-    const item = response.data.data.allData;
-    setShow(item);
+    const item = response.data.data;
+    setJson(item);
     return response.data.data;
   });
 
@@ -49,11 +45,20 @@ function Form() {
   }, [handleSubmit]);
 
   // pagination
-  const lastPostIndex = currentPage * postPerPage;
-  const firstPostIndex = lastPostIndex - postPerPage;
-  const currentPosts = show?.slice(firstPostIndex, lastPostIndex);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
 
-  
+  // Memotong data sesuai dengan halaman saat ini
+  const indexLastProduct = currentPage * itemsPerPage;
+
+  const indexFirstProduct = indexLastProduct - itemsPerPage;
+  const currentData = json?.allData.slice(indexFirstProduct, indexLastProduct);
+
+  // Fungsi untuk mengganti halaman
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
   return (
     <>
       <div className="text-center min-h-screen bg-orange-50 py-10">
@@ -79,7 +84,9 @@ function Form() {
             </div>
             <div className="flex justify-start mb-2">
               <select id="kedatangan" value={kedatangan} required onChange={(e) => setKedatangan(e.target.value)} className="w-[100%] p-1 border border-orange-400 rounded-lg focus:ring focus:border-none focus:outline-none">
-                <option hidden className="text-slate-600">Pilih</option>
+                <option hidden className="text-slate-600">
+                  Pilih
+                </option>
                 <option value="hadir">Hadir</option>
                 <option value="tidakHadir">Tidak Hadir</option>
               </select>
@@ -105,10 +112,10 @@ function Form() {
           </form>
         </div>
         <div className="mt-10">
-          {currentPosts?.length < 1 ? (
+          {currentData?.length < 1 ? (
             <h2 className="text-2xl font-bold">Belum ada ucapan</h2>
           ) : (
-            currentPosts?.map((item, index) => (
+            currentData?.map((item, index) => (
               <>
                 <div key={index} className="lg:w-1/2 w-[90%] flex bg-white rounded-lg mx-auto">
                   <div className="px-3 py-5 sm:w-[10%] w-[20%]">
@@ -133,7 +140,17 @@ function Form() {
             ))
           )}
         </div>
-        <Pagination totalPosts={currentPosts?.length} postPerPage={postPerPage} />
+        <div className="flex justify-center">
+          <div>
+            <div className="pagination">
+              {Array.from({ length: Math.ceil(json?.totalItem / itemsPerPage) }).map((_, index) => (
+                <button key={index} onClick={() => handlePageChange(index + 1)}>
+                  {index + 1}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );
