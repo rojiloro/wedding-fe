@@ -33,7 +33,7 @@ function Countdown() {
   }, []);
   return (
     <>
-      <div className="text-center sm:text-2xl text-xl py-10 min-h-screen">
+      <div className="text-center sm:text-2xl text-xl py-10 min-h-screen font-monserat">
         <div className="font-bold">
           <h2>Countdown</h2>
         </div>
@@ -55,7 +55,7 @@ function Countdown() {
             <p>Detik</p>
           </div>
         </div>
-        <div className="bg-orange-100 -mb-10">
+        <div className="bg-orange-100 -mb-10 font-monserat">
           <div className="mt-60">
             <h1 className="font-bold">Gift</h1>
           </div>

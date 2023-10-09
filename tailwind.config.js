@@ -5,10 +5,10 @@ export default {
     extend: {
       fontFamily: {
         custom: ["Birdeline Yashintta", "sans-serif"],
-        custom3 : ["Onions", "sans-serif"],
-        custom4 : ["Gilconish Matter", "sans-serif"],
-        custom2 : ["Identitad", "sans-serif"],
-        
+        custom3: ["Onions", "sans-serif"],
+        custom4: ["Gilconish Matter", "sans-serif"],
+        custom2: ["Identitad", "sans-serif"],
+        monserat: ["Montserrat", "sans-serif"],
       },
     },
   },

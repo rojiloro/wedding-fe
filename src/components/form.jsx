@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import profil from "../assets/profil.png";
-
+import moment from "moment";
 import { useMutation, useQuery } from "react-query";
 import { API } from "../config/api";
-
 
 function Form() {
   const [nama, setNama] = useState("");
@@ -40,7 +39,7 @@ function Form() {
     async () => {
       const response = await API.get(`/users?page=${currentPage}&size=5`);
       const item = response.data.data;
-      console.log(item);
+
       setJson(item);
       return item;
     },
@@ -52,15 +51,16 @@ function Form() {
   }, [currentPage]);
 
   const currentData = json?.allData;
+  const tanggal = moment(currentData?.createdAt).format("D MMMM YYYY");
+  const jam = moment(currentData?.createdAt).format("HH:mm");
 
-  
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
 
   return (
     <>
-      <div className="text-center min-h-screen bg-orange-50 py-10">
+      <div className="text-center min-h-screen bg-orange-50 py-10 font-monserat">
         <h1 className="text-2xl font-bold font-custom2">Guest Book</h1>
         <div className="sm:w-1/2 w-[90%] bg-white py-3 px-10 mx-auto rounded-md mt-5">
           <form onSubmit={(e) => handleSubmit.mutate(e)}>
@@ -128,9 +128,9 @@ function Form() {
                     <div className="text-start py-2 px-4 flex">
                       <p>{item.ucapan}</p>
                     </div>
-                    <div className="sm:-ml-[75%]  mb-1">
+                    <div className="sm:-ml-[70%]  mb-1">
                       <p>
-                        {item.createdAt.slice(0, 10)} {item.createdAt.slice(11, 16)}
+                        {tanggal} {jam}
                       </p>
                     </div>
                   </div>
