@@ -23,9 +23,9 @@ function Hero() {
             <p>untuk hadir di acara pernikahan</p>
           </div> */}
           <div className="sm:text-7xl text-5xl font-custom4 font-bold text-slate-800 mb-10">
-            <h1 data-aos="fade-right">Rifkiyantoro</h1>
+            <h1 data-aos="fade-right">Rifkiyantoro, S.Kom</h1>
             <p className="text-8xl">&</p>
-            <h1 data-aos="fade-left">Zumrotun Alfiyah, Alhz</h1>
+            <h1 data-aos="fade-left">Zumrotun Alfiyah, S.Pd</h1>
           </div>
           <div data-aos="zoom-in" className="mb-16 font-bold sm:text-sm text-xs uppercase  sm:tracking-[1em] tracking-[0.5em] text-slate-800 decoration-black">
             <p>Kamis, 19 Oktober 2023</p>

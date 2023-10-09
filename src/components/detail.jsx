@@ -46,11 +46,11 @@ function Detail() {
         </div>
         <div className="flex justify-center mt-10">
           <div className="sm:w-1/4 font-monserat  text-center sm:p-5 p-3 mr-4 bg-orange-200 rounded-lg hover:scale-110 transition cursor-pointer">
-            <Link target="_blank" to="https://maps.app.goo.gl/nEf5B3Ry99zR7V568">
+            <Link target="_blank" to="https://maps.app.goo.gl/ybF1BkdAhW8nxuvx5">
               <p>Tamu Undangan</p>
-              <p>Kamis, Jum'at</p>
-              <p>19, 20 Oktober 2023</p>
-              <p>Karangsari 02/04, Dieng Kulon, Batur</p>
+              <p>Rabu, Kamis</p>
+              <p>18, 19 Oktober 2023</p>
+              <p>Rt 04/ Rw 02, Condong Campur, Pejawaran</p>
               <p>Banjarnegara</p>
               <p className="text-xl font-semibold text-orange-600">Click to see on maps</p>
             </Link>
