@@ -10,6 +10,8 @@ function Form() {
   const [kedatangan, setKedatangan] = useState("");
   const [ucapan, setUcapan] = useState("");
   const [json, setJson] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
 
   const data = {
     nama: nama,
@@ -33,26 +35,30 @@ function Form() {
     }
   });
 
-  let { data: users, refetch } = useQuery("usersCache", async () => {
-    const response = await API.get("/users");
-    const item = response.data.data;
-    setJson(item);
-    return response.data.data;
-  });
+  let { data: users, refetch } = useQuery(
+    "usersCache",
+    async () => {
+      const response = await API.get(`/users?page=${currentPage}&size=5`);
+      const item = response.data.data;
+      console.log(item);
+      setJson(item);
+      return item;
+    },
+    [currentPage]
+  );
 
   useEffect(() => {
     refetch();
-  }, [handleSubmit]);
+  }, [currentPage]);
 
   // pagination
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
 
   // Memotong data sesuai dengan halaman saat ini
-  const indexLastProduct = currentPage * itemsPerPage;
+  // const indexLastProduct = currentPage * itemsPerPage;
+  // const indexFirstProduct = indexLastProduct - itemsPerPage;
 
-  const indexFirstProduct = indexLastProduct - itemsPerPage;
-  const currentData = json?.allData.slice(indexFirstProduct, indexLastProduct);
+  // const currentData = json?.allData.slice(indexFirstProduct, indexLastProduct);
+  const currentData = json?.allData;
 
   // Fungsi untuk mengganti halaman
   const handlePageChange = (page) => {
@@ -144,7 +150,7 @@ function Form() {
           <div>
             <div className="pagination">
               {Array.from({ length: Math.ceil(json?.totalItem / itemsPerPage) }).map((_, index) => (
-                <button key={index} onClick={() => handlePageChange(index + 1)}>
+                <button className="text-2xl mx-6" key={index} onClick={() => handlePageChange(index + 1)}>
                   {index + 1}
                 </button>
               ))}
