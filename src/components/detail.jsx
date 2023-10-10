@@ -45,6 +45,11 @@ function Detail() {
               <p className="mt-1">Pejawaran Batur Banjarnegara</p>
             </div>
           </div>
+          <div className="mt-10 text-center font-monserat">
+            <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami</p>
+            <p>apabila Bapak/Ibu/Saudara/i berkenan hadir</p>
+            <p>untuk memberikan doa restu kepada kedua mempelai</p>
+          </div>
           <div className="flex justify-center mt-10">
             <div className="sm:w-1/4 font-monserat  text-center sm:p-5 p-3 mr-4 bg-orange-200 rounded-lg hover:scale-110 transition cursor-pointer">
               <Link target="_blank" to="https://maps.app.goo.gl/nEf5B3Ry99zR7V568">
